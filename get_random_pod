@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+kubectl get pod -l "app.kubernetes.io/name=$1" | tail +2 | awk '{ print $1 }' | sort --random-sort | head -n 1
