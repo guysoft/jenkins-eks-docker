@@ -15,7 +15,7 @@ agent:
       nfs:
         server: XXXXX.amazonaws.com
         path: /deployment_path/kobectl
-        mountPath: //var/jenkins_home/.kube
+        mountPath: /var/jenkins_home/.kube
     - name: aws-cred
       nfs:
         server: XXXXX.efs.us-east-1.amazonaws.com
