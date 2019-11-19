@@ -1,6 +1,8 @@
 # jenkins-eks-docker
 Jenkins with eks kubectl and support [AWS EKS](https://aws.amazon.com/eks/)
 
+[DockerHub](https://hub.docker.com/r/guysoft/jenkins-eks)
+
 # Example usage in kubernetes
 
 1. Edit the [``stable/jenkins`` values.yaml](https://github.com/helm/charts/blob/master/stable/jenkins/values.yaml) helm chart to mount your aws credentials and kubectl from an EFS share or EBS. ANd use this image:
