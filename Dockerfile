@@ -32,7 +32,8 @@ RUN pip3 install --user colorama
 
 USER root
 RUN pip3 install awscli
-USER jenkins
-#TODO aws configure
 
 COPY ./get_random_pod /usr/local/bin/get_random_pod
+RUN chmod +x /usr/local/bin/get_random_pod
+
+USER jenkins
