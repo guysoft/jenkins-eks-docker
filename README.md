@@ -27,3 +27,13 @@ agent:
 helm install stable/jenkins -f values.yaml --name jenkins
 ```
 3. now kubectl should work from your jenkins master executor within kubernetes
+
+# Run stuff from pods
+
+You can use the provided ``get_random_pod`` to run something from a random pod that has a name label ``app.kubernetes.io/name``.
+In jenkins you can use a command:
+```
+$ kubectl exec $(get_random_pod nginx) hostname
+nginx-7846666659-xt5g4
+```
+
