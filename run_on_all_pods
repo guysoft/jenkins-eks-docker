@@ -1,0 +1,4 @@
+# #!/usr/bin/env bash
+for pod in $(kubectl get pod -l "app.kubernetes.io/name=$1" | tail +2 | grep Running | awk '{ print $1 }'); do
+    kubectl exec $pod -- bash -c 'ls /'
+done
