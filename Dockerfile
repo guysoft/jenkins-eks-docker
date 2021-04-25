@@ -22,6 +22,10 @@ RUN curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/
 RUN chmod +x ./aws-iam-authenticator
 RUN mv ./aws-iam-authenticator /usr/local/bin
 
+RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
+RUN mv /tmp/eksctl /usr/local/bin/eksctl
+RUN chmod 755 /usr/local/bin/eksctl
+
 RUN wget https://bootstrap.pypa.io/get-pip.py -O - | python3
 
 USER jenkins
