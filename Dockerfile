@@ -25,6 +25,8 @@ RUN mv ./aws-iam-authenticator /usr/local/bin
 RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
 RUN mv /tmp/eksctl /usr/local/bin/eksctl
 RUN chmod 755 /usr/local/bin/eksctl
+# Give aws/eks same credentials on user and jenkins, both are needed, see https://rtfm.co.ua/en/aws-eksctl-put-http-169-254-169-254-latest-api-token-net-http-request-canceled-2/
+RUN ln -s /var/jenkins_home/.aws /root/.aws
 
 RUN wget https://bootstrap.pypa.io/get-pip.py -O - | python3
 
