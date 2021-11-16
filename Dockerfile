@@ -9,6 +9,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     apt-utils \
+    wget \
     python3 \
     python3-dev \
   && rm -rf /var/lib/apt/lists/* \
