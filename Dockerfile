@@ -1,4 +1,4 @@
-FROM bitnami/jenkins:2.332.2-debian-10-r26
+FROM jenkins/jenkins:lts
 MAINTAINER Guy Sheffer <guy@shapedo.com>
 EXPOSE 8080
 
@@ -31,15 +31,16 @@ RUN ln -s /var/jenkins_home/.aws /root/.aws
 
 RUN wget https://bootstrap.pypa.io/get-pip.py -O - | python3
 
-USER 1001
+USER jenkins
 WORKDIR /
+
+RUN pip3 install --user botocore
+RUN pip3 install --user colorama
 
 USER root
 RUN pip3 install awscli
-RUN pip3 install botocore
-RUN pip3 install colorama
 
 COPY ./get_random_pod /usr/local/bin/get_random_pod
 RUN chmod +x /usr/local/bin/get_random_pod
 
-USER 1001
+USER jenkins
