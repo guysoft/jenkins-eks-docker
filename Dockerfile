@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts
+FROM bitnami/jenkins:2.332.2-debian-10-r26
 MAINTAINER Guy Sheffer <guy@shapedo.com>
 EXPOSE 8080
 
