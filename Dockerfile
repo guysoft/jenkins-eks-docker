@@ -31,7 +31,7 @@ RUN ln -s /var/jenkins_home/.aws /root/.aws
 
 RUN wget https://bootstrap.pypa.io/get-pip.py -O - | python3
 
-USER jenkins
+USER 1001
 WORKDIR /
 
 RUN pip3 install --user botocore
@@ -43,4 +43,4 @@ RUN pip3 install awscli
 COPY ./get_random_pod /usr/local/bin/get_random_pod
 RUN chmod +x /usr/local/bin/get_random_pod
 
-USER jenkins
+USER 1001
