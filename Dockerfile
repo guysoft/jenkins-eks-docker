@@ -34,11 +34,10 @@ RUN wget https://bootstrap.pypa.io/get-pip.py -O - | python3
 USER 1001
 WORKDIR /
 
-RUN pip3 install --user botocore
-RUN pip3 install --user colorama
-
 USER root
 RUN pip3 install awscli
+RUN pip3 install botocore
+RUN pip3 install colorama
 
 COPY ./get_random_pod /usr/local/bin/get_random_pod
 RUN chmod +x /usr/local/bin/get_random_pod
