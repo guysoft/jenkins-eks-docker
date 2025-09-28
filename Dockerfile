@@ -16,17 +16,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
   && apt -qyy clean
 
-# Install uv for fast Python package management
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
-
 # Create virtual environment and set it as default
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 ENV VIRTUAL_ENV="/venv"
 
-# Install Python packages using uv in the virtual environment
-RUN uv pip install botocore colorama awscli
+# Install Python packages directly in the virtual environment
+# Using the venv's pip bypasses PEP 668 restrictions
+RUN /venv/bin/pip install --upgrade pip && \
+    /venv/bin/pip install botocore colorama awscli
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 RUN chmod 755 ./kubectl
